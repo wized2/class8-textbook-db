@@ -4,7 +4,7 @@
  *   GET /                 info
  *   GET /v1/books         list books
  *   GET /v1/books/:id     book metadata + page count
- *   GET /v1/books/:id/pages/:n   page text
+ *   GET /v1/books/:id/pages/:n   page text (n = printed book page number)
  */
 const GH_BASE = "https://raw.githubusercontent.com/wized2/class8-textbook-db/main";
 

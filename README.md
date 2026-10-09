@@ -40,3 +40,10 @@ python3 scripts/ci_build_index.py
 `english8` `math8` `science8` `computer8` `history8` `geography8` `ethics8` `islamiat8` `urdu8` `arabic8` `tarjama8`
 
 Educational use — PCTB free e-books. OCR may contain errors on scanned Urdu/Arabic pages.
+
+## Page numbers = printed book pages
+
+API `pages/{n}` uses the **printed page number** in the physical textbook (footer), not the PDF file index.
+
+Cover / title / TOC sheets without a printed number are skipped.
+Each JSON entry also has `pdfPage` (1-based PDF index) for debugging.
