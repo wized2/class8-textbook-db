@@ -1,0 +1,28 @@
+{
+  "books": [
+    {
+      "bookId": "english8",
+      "title": "English Class 8 (PCTB SNC)",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 129,
+      "ocrPages": 129
+    },
+    {
+      "bookId": "math8",
+      "title": "Mathematics",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 241,
+      "ocrPages": 95
+    },
+    {
+      "bookId": "tarjama8",
+      "title": "Tarjama-tul-Quran Class 8 (PCTB)",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 186,
+      "ocrPages": 58
+    }
+  ]
+}
