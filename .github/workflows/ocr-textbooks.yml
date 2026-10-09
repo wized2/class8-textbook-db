@@ -10,11 +10,11 @@ on:
       dpi:
         description: "OCR DPI (120–200; higher = sharper, slower)"
         required: false
-        default: "150"
+        default: "120"
       workers:
         description: "Parallel OCR threads per book job"
         required: false
-        default: "4"
+        default: "6"
 
 permissions:
   contents: write
@@ -70,8 +70,9 @@ jobs:
 
       - name: OCR ${{ matrix.bookId }}
         env:
-          DPI: ${{ github.event.inputs.dpi || '150' }}
-          WORKERS: ${{ github.event.inputs.workers || '4' }}
+          PYTHONUNBUFFERED: "1"
+          DPI: ${{ github.event.inputs.dpi || '120' }}
+          WORKERS: ${{ github.event.inputs.workers || '6' }}
         run: |
           python3 scripts/ci_ocr_book.py \
             "${{ matrix.bookId }}" \
