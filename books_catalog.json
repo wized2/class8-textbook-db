@@ -1,0 +1,15 @@
+{
+  "books": [
+    {"bookId": "english8", "title": "English", "driveId": "13rIz-_NI91uxCW90QotFzRp8K6f1POds", "langs": "eng"},
+    {"bookId": "math8", "title": "Mathematics", "driveId": "1h_hxXFWa9P7iANGsCxL7yJLzKoBawP_3", "langs": "eng"},
+    {"bookId": "science8", "title": "General Science", "driveId": "1iJKrX8KhVtskhePLUZn8kYF2VxdaRw1r", "langs": "eng"},
+    {"bookId": "computer8", "title": "Computer Science", "driveId": "1dl3Wr4fr8CV5BmhuTK7_qy-FH2mAzwzp", "langs": "eng"},
+    {"bookId": "history8", "title": "History", "driveId": "1i5rSwU8pGXNuLlzKUDwrWacPMucSVOvF", "langs": "eng"},
+    {"bookId": "geography8", "title": "Geography", "driveId": "1kgBQB3sQ_rkfm9QsWPnX7Pkd6ATMhCfV", "langs": "eng"},
+    {"bookId": "ethics8", "title": "Ethics", "driveId": "19WGTb7aCAqyEBTBdvQm1uNbG_GRevWu2", "langs": "eng"},
+    {"bookId": "islamiat8", "title": "Islamiat", "driveId": "1SwNLNJXjygB7BQ6nOPlwlDUt5o8MSL39", "langs": "urd+eng"},
+    {"bookId": "urdu8", "title": "Urdu", "driveId": "1_xPfvPPDr-pzDAOfcLlgXPd9r5tDZgRs", "langs": "urd+eng"},
+    {"bookId": "arabic8", "title": "Arabic", "driveId": "12qFSZpNT9sJfpM0DdepKqo3KWirdwDCW", "langs": "ara+eng"},
+    {"bookId": "tarjama8", "title": "Tarjama-tul-Quran", "driveId": "1iudTZN_sXIlmlpLvt1BISFL_aKkydBJw", "langs": "ara+urd"}
+  ]
+}
