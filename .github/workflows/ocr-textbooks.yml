@@ -58,7 +58,7 @@ jobs:
     timeout-minutes: 360
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 6
       matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
@@ -66,7 +66,7 @@ jobs:
       - name: Install OCR tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-ara tesseract-ocr-urd poppler-utils imagemagick
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-ara tesseract-ocr-urd poppler-utils
 
       - name: OCR ${{ matrix.bookId }}
         env:
