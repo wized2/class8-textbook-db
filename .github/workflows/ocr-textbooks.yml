@@ -4,24 +4,24 @@ on:
   workflow_dispatch:
     inputs:
       books:
-        description: "Comma-separated bookIds (empty = all from books_catalog.json)"
+        description: "Comma bookIds (empty = all)"
         required: false
         default: ""
       dpi:
-        description: "OCR DPI (120–200; higher = sharper, slower)"
+        description: "Render DPI for pages that need OCR"
         required: false
-        default: "120"
+        default: "100"
       workers:
-        description: "Parallel OCR threads per book job"
+        description: "Parallel OCR workers per book"
         required: false
-        default: "6"
-
-permissions:
-  contents: write
+        default: "4"
 
 concurrency:
   group: ocr-textbooks
   cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   prepare:
@@ -32,20 +32,19 @@ jobs:
       - uses: actions/checkout@v4
       - id: set
         env:
-          FILTER: ${{ github.event.inputs.books }}
+          BOOKS_FILTER: ${{ github.event.inputs.books }}
         run: |
-          python3 - <<'PY'
+          python3 << 'PY'
           import json, os
-          catalog = json.load(open("books_catalog.json"))
-          books = catalog["books"]
-          filt = (os.environ.get("FILTER") or "").strip()
+          cat = json.load(open("books_catalog.json"))
+          books = cat["books"]
+          filt = (os.environ.get("BOOKS_FILTER") or "").strip()
           if filt:
               want = {x.strip() for x in filt.split(",") if x.strip()}
               books = [b for b in books if b["bookId"] in want]
           if not books:
               raise SystemExit("No books selected")
           matrix = {"include": books}
-          # compact single-line for GITHUB_OUTPUT
           line = json.dumps(matrix, separators=(",", ":"))
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
               fh.write(f"matrix={line}\n")
@@ -55,7 +54,7 @@ jobs:
   ocr:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       max-parallel: 6
@@ -63,16 +62,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install OCR tools
+      - name: Install tools
         run: |
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-ara tesseract-ocr-urd poppler-utils
 
-      - name: OCR ${{ matrix.bookId }}
+      - name: Extract / OCR ${{ matrix.bookId }}
         env:
           PYTHONUNBUFFERED: "1"
-          DPI: ${{ github.event.inputs.dpi || '120' }}
-          WORKERS: ${{ github.event.inputs.workers || '6' }}
+          DPI: ${{ github.event.inputs.dpi || '100' }}
+          WORKERS: ${{ github.event.inputs.workers || '4' }}
         run: |
           python3 scripts/ci_ocr_book.py \
             "${{ matrix.bookId }}" \
@@ -93,10 +92,11 @@ jobs:
   merge-and-push:
     needs: ocr
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download all book artifacts
+      - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           path: _artifacts
@@ -106,24 +106,27 @@ jobs:
       - name: Place JSON + rebuild index
         run: |
           set -euo pipefail
+          shopt -s nullglob
           for dir in _artifacts/book-*; do
             bid="${dir#*_artifacts/book-}"
-            mkdir -p "books/$bid"
-            cp "$dir/data.json" "books/$bid/data.json"
-            echo "placed $bid ($(wc -c < books/$bid/data.json) bytes)"
+            if [[ -f "$dir/data.json" ]]; then
+              mkdir -p "books/$bid"
+              cp "$dir/data.json" "books/$bid/data.json"
+              echo "placed $bid ($(wc -c < books/$bid/data.json) bytes)"
+            fi
           done
           python3 scripts/ci_build_index.py
+          cat index.json
 
       - name: Commit and push
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add books index.json books_catalog.json scripts .github
+          git add books index.json || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "ci: OCR textbook pages ($(date -u +%Y-%m-%d))"
-          git pull --rebase origin main || true
-          git push origin HEAD:main
+          git commit -m "ocr: update textbook page text (text-layer + selective OCR)"
+          git push
