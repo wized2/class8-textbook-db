@@ -27,7 +27,7 @@ Workflow: **OCR Class 8 Textbooks** (`.github/workflows/ocr-textbooks.yml`)
    - `workers` — parallel threads per book (default `4`)
 3. Each book runs as its own job (matrix), uploads artifact, then one job merges + pushes `books/*/data.json` + `index.json`.
 
-Catalog of Drive IDs: `books_catalog.json`.
+Catalog of Drive IDs: `books_catalog.json` (official **PECTAA** Class-VIII links from https://pectaa.edu.pk/books-and-publications/).
 
 ```bash
 # Local equivalent

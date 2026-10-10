@@ -1,15 +1,17 @@
 {
   "books": [
-    {"bookId": "english8", "title": "English", "driveId": "13rIz-_NI91uxCW90QotFzRp8K6f1POds", "langs": "eng"},
-    {"bookId": "math8", "title": "Mathematics", "driveId": "1h_hxXFWa9P7iANGsCxL7yJLzKoBawP_3", "langs": "eng"},
-    {"bookId": "science8", "title": "General Science", "driveId": "1iJKrX8KhVtskhePLUZn8kYF2VxdaRw1r", "langs": "eng"},
-    {"bookId": "computer8", "title": "Computer Science", "driveId": "1dl3Wr4fr8CV5BmhuTK7_qy-FH2mAzwzp", "langs": "eng"},
-    {"bookId": "history8", "title": "History", "driveId": "1i5rSwU8pGXNuLlzKUDwrWacPMucSVOvF", "langs": "eng"},
-    {"bookId": "geography8", "title": "Geography", "driveId": "1kgBQB3sQ_rkfm9QsWPnX7Pkd6ATMhCfV", "langs": "eng"},
-    {"bookId": "ethics8", "title": "Ethics", "driveId": "19WGTb7aCAqyEBTBdvQm1uNbG_GRevWu2", "langs": "eng"},
-    {"bookId": "islamiat8", "title": "Islamiat", "driveId": "1SwNLNJXjygB7BQ6nOPlwlDUt5o8MSL39", "langs": "urd+eng"},
-    {"bookId": "urdu8", "title": "Urdu", "driveId": "1_xPfvPPDr-pzDAOfcLlgXPd9r5tDZgRs", "langs": "urd+eng"},
-    {"bookId": "arabic8", "title": "Arabic", "driveId": "12qFSZpNT9sJfpM0DdepKqo3KWirdwDCW", "langs": "ara+eng"},
-    {"bookId": "tarjama8", "title": "Tarjama-tul-Quran", "driveId": "1iudTZN_sXIlmlpLvt1BISFL_aKkydBJw", "langs": "ara+urd"}
-  ]
+    {"bookId": "english8", "title": "English SNC 2023-24", "driveId": "1VjslGe1d421x--q0gxAn2l4tYx3zAKF3", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "math8", "title": "Mathematics SNC 2023-24", "driveId": "1nu_CRaFBMu2C5mgJd7Y-ekzOVITP-9rq", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "science8", "title": "General Science SNC 2023-24", "driveId": "14fpAa9TGsayEuMYuwY9gaRU9c_PKky_s", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "computer8", "title": "Computer Science SNC 2023-24", "driveId": "1HcurSgdPnqAIuyVzzoKCDk_rGV-t5LsM", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "history8", "title": "History SNC 2023-24", "driveId": "1hRe3ZTRWQrMEcnWWPJtopp-u5intUob2", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "geography8", "title": "Geography SNC 2023-24", "driveId": "1aMxVwR0tg25ZzUKF17yGYJ6WIqLlh2X1", "langs": "eng", "source": "PECTAA"},
+    {"bookId": "urdu8", "title": "Urdu SNC 2023-24", "driveId": "1b_tMiA-YJ3ujhvrQQVJ43MGR3MlQykZh", "langs": "urd+eng", "source": "PECTAA"},
+    {"bookId": "islamiat8", "title": "Islamiat SNC 2023-24", "driveId": "1wSqIrXtfu0qjaMKlRdMnQ3eOKG3kF-jC", "langs": "urd+eng", "source": "PECTAA"},
+    {"bookId": "tarjama8", "title": "Tarjama-tul-Quran", "driveId": "1Gs2TIBIS5TumiHy1WlCm6yDYFyQnGSeH", "langs": "ara+urd", "source": "PECTAA"},
+    {"bookId": "arabic8", "title": "Arabic-8 2022", "driveId": "1FIATDLIZyaKZkJOrhlJyaoYavRfLNpnc", "langs": "ara+eng", "source": "PECTAA"},
+    {"bookId": "ethics8", "title": "Ethics-8 2022", "driveId": "1U0XEoha1jvTgcclNxlicz4Zr64eCb0Jd", "langs": "eng", "source": "PECTAA"}
+  ],
+  "catalogSource": "https://pectaa.edu.pk/books-and-publications/",
+  "note": "Official Class-VIII column links from PECTAA e-books page"
 }
