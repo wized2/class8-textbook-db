@@ -1,12 +1,36 @@
 {
   "books": [
     {
+      "bookId": "arabic8",
+      "title": "Arabic-8 2022",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 128,
+      "ocrPages": 128
+    },
+    {
       "bookId": "english8",
       "title": "English Class 8 (PCTB SNC)",
       "class": 8,
       "source": "PCTB",
       "pageCount": 129,
       "ocrPages": 129
+    },
+    {
+      "bookId": "ethics8",
+      "title": "Ethics-8 2022",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 54,
+      "ocrPages": 54
+    },
+    {
+      "bookId": "history8",
+      "title": "History SNC 2023-24",
+      "class": 8,
+      "source": "PCTB",
+      "pageCount": 94,
+      "ocrPages": 94
     },
     {
       "bookId": "math8",
