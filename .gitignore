@@ -1,3 +1,6 @@
 pdfs/
 _artifacts/
 *.pdf
+__pycache__/
+*.pyc
+pdfs/
